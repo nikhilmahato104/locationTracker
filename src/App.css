@@ -1,0 +1,488 @@
+/* General Body and Layout */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+  color: white;
+  transition: background-color 1s ease-in-out;
+}
+
+.App {
+  text-align: center;
+  max-width: 100%;
+  padding: 20px;
+  position: relative;
+  min-height: 100vh;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #f4f4f4;
+}
+
+/* Password Prompt */
+.passwordPrompt {
+  position: fixed;
+  top: 30%; /* Adjusted to be 30% from the top */
+  left: 50%;
+  transform: translate(-50%, -30%); /* Center horizontally and shift slightly for better positioning */
+  background: linear-gradient(to bottom right, #ff0000 50%, #1100ff 50%); /* Diagonal red to blue split */
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  z-index: 1000;
+  box-shadow: 6px 6px 12px rgba(255, 0, 0, 0.6), -6px -6px 12px rgba(0, 0, 255, 0.6); /* Split red and blue shadows */
+  width: 80%;
+  max-width: 400px;
+  backdrop-filter: blur(5px); /* Apply background blur effect */
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease; /* Transition for smooth effects */
+}
+
+.passwordPrompt:hover {
+  transform: translate(-50%, -30%) scale(1.05); /* Slightly scale up on hover for 3D effect */
+  box-shadow: 5px 5px 10px rgba(22, 1, 255, 0.8), -5px -5px 10px rgba(255, 0, 0, 0.8); /* Darker red and blue shadows on hover */
+}
+
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.passwordForm input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.passwordForm button {
+  padding: 10px;
+  background-color: #4CAF50; /* Green background for submit button */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.passwordForm button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Close button in top-right corner */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.closeButton:hover {
+  color: red;
+}
+
+/* Coordinates Input Form */
+.coordinatesInputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.coordinatesInputForm input {
+  padding: 8px;
+  margin: 5px;
+  width: 250px;
+}
+
+.coordinatesInputForm button {
+  padding: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.coordinatesInputForm button:hover {
+  background-color: #45a049;
+}
+
+/* Google Map Link */
+.googleMapLink {
+  margin-top: 20px;
+}
+
+.googleMapLink a {
+  color: #00f;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.googleMapLink a:hover {
+  text-decoration: underline;
+  color: #00aaff;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .iframePopup {
+    max-width: 100%;
+    max-height: 400px;
+  }
+
+  .passwordPrompt {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .info {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .passwordForm input {
+    font-size: 14px;
+  }
+
+  .passwordForm button {
+    font-size: 14px;
+  }
+}
+
+/* Loading Spinner */
+.circle-loader {
+  border: 8px solid #f3f3f3; /* Light gray background */
+  border-top: 8px solid #3498db; /* Blue color for the loader */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Welcome Message */
+.welcomeMessage {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering the element both vertically and horizontally */
+  text-align: center;
+}
+
+/* Additional Styles for Mobile */
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.passwordForm input,
+.coordinatesInputForm input {
+  background-color: #222;
+  color: white;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Prevent scrolling when the password prompt is visible */
+.App.passwordVisible {
+  overflow: hidden;
+}
+
+
+
+
+
+
+.locationInfo {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Subtle gradient for a modern look */
+  border: 2px solid #007bff; /* Blue border for emphasis */
+  border-radius: 12px; /* Smoothly rounded corners */
+  padding: 20px; /* Spacious padding for content */
+  margin: 80px auto; /* Center the container */
+  width: fit-content; /* Adjust width to content */
+  max-width: 90%; /* Ensure responsiveness on smaller screens */
+  box-shadow: 0px 8px 15px rgba(0, 123, 255, 0.2); /* Soft blue shadow for depth */
+  text-align: center; /* Center-align text for better readability */
+  color: #333; /* Neutral text color */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  animation: fadeIn 1s ease-in-out; /* Smooth entry animation */
+}
+
+.locationInfo p {
+  font-size: 18px; /* Slightly larger font for easy readability */
+  margin: 10px 0; /* Adequate spacing between lines */
+  color: #007bff; /* Blue text for coordinates */
+  font-weight: 600; /* Semi-bold text for better emphasis */
+}
+
+.locationInfo p strong {
+  color: #555; /* Neutral color for labels to distinguish them from values */
+  font-weight: 700; /* Slightly bolder text for labels */
+}
+
+/* Add a glowing border effect when hovered */
+.locationInfo:hover {
+  box-shadow: 0px 12px 20px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
+  transform: scale(1.03); /* Slight zoom effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.coordinatesInputForm {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Gradient for 3D surface */
+  border-radius: 15px; /* Softer rounded corners */
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(10, 2, 247, 0.8); /* 3D shadow effect */
+  padding: 30px; /* Inner spacing */
+  width: 100%;
+  max-width: 420px; /* Limit width */
+  margin: 20% auto 0; /* Centered with spacing from the top */
+  text-align: left; /* Align text to the left */
+  animation: popIn 0.5s ease-in-out; /* Smooth entry animation */
+}
+
+.coordinatesInputForm label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555; /* Softer text color for better contrast */
+  margin-bottom: 10px;
+  display: block;
+}
+
+.coordinatesInputForm input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd; /* Subtle border */
+  border-radius: 8px; /* Slightly more rounded */
+  font-size: 14px;
+  background: #f1f1f1; /* Light gray background */
+  color: #333;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1), inset -2px -2px 5px rgba(255, 255, 255, 0.7); /* Inner shadow for depth */
+  transition: box-shadow 0.3s, transform 0.2s; /* Smooth transition for hover */
+}
+
+.coordinatesInputForm input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2), inset 1px 1px 3px rgba(0, 0, 0, 0.1); /* Glow effect */
+  transform: scale(1.02); /* Slightly larger on focus */
+}
+
+.coordinatesInputForm button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(145deg, #007bff, #0056b3); /* 3D gradient */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(155, 25, 25, 0.2), -2px -2px 6px rgba(69, 61, 61, 0.7); /* Depth shadow */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+}
+
+.coordinatesInputForm button:hover {
+  transform: translateY(-2px); /* Raised on hover */
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.8); /* Deeper shadow on hover */
+}
+
+/* Pop-in animation */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .coordinatesInputForm {
+    padding: 20px;
+    width: 90%;
+    margin: 15% auto 0;
+  }
+
+  .coordinatesInputForm label,
+  .coordinatesInputForm input,
+  .coordinatesInputForm button {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+/* SKELTON ADVANCED CODING */
+/* Full-screen loading container */
+/* Add to your App.css */
+.loading {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.circle-loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+/* CSS FOR GENARATED LINK */
+/* Google Maps Link styling */
+.googleMapLink {
+  text-align: center;
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.googleMapLink a {
+  color: #3498db; /* Blue color for the link */
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.googleMapLink a:hover {
+  background-color: #3498db;
+  color: white; /* White text color when hovered */
+  border-color: #2980b9; /* Darker blue border on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .googleMapLink a {
+    font-size: 16px; /* Slightly smaller font on tablets */
+    padding: 8px 16px; /* Adjust padding for smaller screen */
+  }
+}
+
+@media (max-width: 360px) {
+  .googleMapLink a {
+    font-size: 10px; /* Smaller font size on small screens */
+    padding: 6px 12px; /* Further reduce padding on small devices */
+    width: 95%; /* Make the link button take full width */
+    box-sizing: border-box; /* Ensure the padding is included in the width */
+    margin-top: 30%;
+  }
+}
+
+
+
+
+.copy-emoji {
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: 10px;
+  color: #45a049;
+}
+
+.copy-emoji:hover {
+  color: #007bcf;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.loading .circle-loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
